@@ -226,9 +226,9 @@ if __name__ == "__main__":
         label_titles = [line.strip() for line in open("{}/Y.txt".format(DATASET), "r", encoding="latin").readlines()]
         print("len(trn_point_titles), len(tst_point_titles), len(label_titles) = ", len(trn_point_titles), len(tst_point_titles), len(label_titles))
 
-        trn_point_features = np.load("{}/{}CondensedData/trn_point_embs.npy".format(DATASET, EMB_TYPE))
-        label_features = np.load("{}/{}CondensedData/label_embs.npy".format(DATASET, EMB_TYPE))
-        tst_point_features = np.load("{}/{}CondensedData/tst_point_embs.npy".format(DATASET, EMB_TYPE))
+        trn_point_features = np.maximum(np.load("{}/{}CondensedData/trn_point_embs.npy".format(DATASET, EMB_TYPE)), 0.0)
+        label_features = np.maximum(np.load("{}/{}CondensedData/label_embs.npy".format(DATASET, EMB_TYPE)), 0.0)
+        tst_point_features = np.maximum(np.load("{}/{}CondensedData/tst_point_embs.npy".format(DATASET, EMB_TYPE)), 0.0)
         print("trn_point_features.shape, tst_point_features.shape, label_features.shape", trn_point_features.shape, tst_point_features.shape, label_features.shape)
 
         trn_X_Y = data_utils.read_sparse_file("{}/trn_X_Y.txt".format(DATASET), force_header=True)
@@ -497,27 +497,16 @@ if __name__ == "__main__":
         torch.save(head_net.state_dict(), os.path.join(model_dir, "model_state_dict.pt"))
         with open(os.path.join(model_dir, "model_params.pkl"), "wb") as fout:
             pickle.dump(params, fout, protocol=4)
+    
+    if(params["num_HN_epochs"] <= 0):
+        print("Accuracies with graph embeddings to shortlist:")
+        test()
+        sys.exit("You have chosen not to fine tune classifiers using hard negatives by providing num_HN_epochs <= 0")
 
     print("==================================================================")
-    print("Accuracies with graph embeddings to shortlist:")
-    test()
-
-    ### DOUBT ###
-    # print("==================================================================")
-    # if(args.save_model == 1):
-    #     model_dir = "{}/GraphXMLModel{}".format(DATASET, RUN_TYPE)
-    #     np.save(os.path.join(model_dir, "label_embs.npy"), label_embs_graph)
-    #     np.save(os.path.join(model_dir, "trn_point_embs.npy"), trn_point_embs_graph)
-    #     np.save(os.path.join(model_dir, "tst_point_embs.npy"), tst_point_embs_graph)
-    #     save_npz(os.path.join(model_dir, "score.npz"), pred)
 
     print("***params=", params)
     print("******  Starting HN fine tuning of calssifiers  ******")
-    if(params["num_HN_epochs"] <= 0):
-        sys.exit("You have chosen not to fine tune classifiers using hard negatives by providing num_HN_epochs <= 0")
-
-    if(RUN_TYPE == "NR"):
-        head_net.graph = params["graph"]
 
     _start = params["num_trn"]
     _end = _start + params["num_tst"]
@@ -610,8 +599,6 @@ if __name__ == "__main__":
 
     params["num_tst"] = 25000
 
-    #head_optimizer = torch.optim.Adam([{"params": [param for name, param in head_net.named_parameters() if "classifier.classifiers" in name], "lr": 0.001}], lr=0.0)
-    #head_optimizer = torch.optim.Adam(head_net.classifier.parameters(), lr=0.001)
     head_optimizer = torch.optim.Adam([{'params': [head_net.classifier.classifiers[0].attention_weights], 'lr': params["attention_lr"]},
                                       {"params": [param for name, param in head_net.classifier.named_parameters() if name != "classifiers.0.attention_weights"], "lr": params["lr"]}], lr=params["lr"])
 
@@ -640,7 +627,6 @@ if __name__ == "__main__":
     params["num_epochs"] = params["num_HN_epochs"]
     
     train()
-
     print("==================================================================")
     print("Accuracies with graph embeddings to shortlist:")
     params["num_tst"] = tst_X_Y.shape[0]
