@@ -17,7 +17,7 @@ python -u train_main.py \
  --fanouts ${12} \
  --num-HN-shortlist ${13} \
  --repo 1 \
- --embedding-type DX2 \
+ --embedding-type DX \
  --run-type NR \
  --num-validation 25000 \
  --validation-freq -1 \

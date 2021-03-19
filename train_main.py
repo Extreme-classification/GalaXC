@@ -211,9 +211,9 @@ if __name__ == "__main__":
         label_titles = [line.strip().split("\t")[1] for line in open("{}/Y.txt".format(DATASET), "r", encoding="utf-8").readlines()]
         print("len(trn_point_titles), len(tst_point_titles), len(label_titles) = ", len(trn_point_titles), len(tst_point_titles), len(label_titles))
 
-        trn_point_features = np.load("{}/{}CondensedData/trn_point_embs.npy".format(DATASET, EMB_TYPE))
-        label_features = np.load("{}/{}CondensedData/label_embs.npy".format(DATASET, EMB_TYPE))
-        tst_point_features = np.load("{}/{}CondensedData/tst_point_embs.npy".format(DATASET, EMB_TYPE))
+        trn_point_features = np.maximum(np.load("{}/{}CondensedData/trn_point_embs.npy".format(DATASET, EMB_TYPE)), 0.0)
+        label_features = np.maximum(np.load("{}/{}CondensedData/label_embs.npy".format(DATASET, EMB_TYPE)), 0.0)
+        tst_point_features = np.maximum(np.load("{}/{}CondensedData/tst_point_embs.npy".format(DATASET, EMB_TYPE)), 0.0)
         print("trn_point_features.shape, tst_point_features.shape, label_features.shape", trn_point_features.shape, tst_point_features.shape, label_features.shape)
 
         total_X_Y = data_utils.read_sparse_file("{}/total_X_Y.txt".format(DATASET), force_header=True)
