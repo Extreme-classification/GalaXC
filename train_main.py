@@ -485,7 +485,8 @@ if __name__ == "__main__":
         scaler = torch.cuda.amp.GradScaler()
 
     train()
-
+    # head_net.load_state_dict(torch.load("/data/desaini/GraphXML/data/LF-AmazonTitles-1.3M/GraphXMLModel_30_4NR/model_state_dict.pt", map_location="cuda:1"))
+    # head_net.move_to_devices()
     params["num_tst"] = tst_X_Y_val.shape[0]  # should be kept as how many we want to validate on
 
     if(args.save_model == 1):
