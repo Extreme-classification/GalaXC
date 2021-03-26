@@ -535,7 +535,7 @@ class Residual(nn.Module):
             nn.init.eye_(self.hidden_layer[0].weight)
             nn.init.constant_(self.hidden_layer[0].bias, 0.0)
 
-class DeepXMLBase(nn.Module):
+class GalaXCBase(nn.Module):
     def __init__(self, num_labels, hidden_dims, device_names,
         feature_type,
         feature_idx: int,
@@ -545,7 +545,7 @@ class DeepXMLBase(nn.Module):
         graph,
         embed_dim: int,
         dropout=0.5, num_clf_partitions=1, padding_idx=0):
-        super(DeepXMLBase, self).__init__()
+        super(GalaXCBase, self).__init__()
 
         # only 1 or 2 hops are allowed.
         assert len(fanouts) in [1, 2, 3]
