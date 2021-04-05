@@ -31,6 +31,7 @@ DatasetName (e.g. LF-AmazonTitles-131K)
 |   Y.txt       (text for labels, one text in each line)
 │   trn_X_Y.txt (trn labels in spmat format)
 |   tst_X_Y.txt (tst labels in spmat format)
+|   filter_labels_test.txt (filter labels where label and test documents are same)
 │
 └───XXCondensedData (embeddings for tst, trn documents and labels, for benchmark datasets, XX=DX[Astec])
     │   trn_point_embs.npy (2D nummpy matrix for trn document embeddings)
@@ -39,7 +40,7 @@ DatasetName (e.g. LF-AmazonTitles-131K)
 
 ```
 
-We have provided the DX(embeddings from Module 1 of Astec) embeddings for public benchmark datasets for ease of use. Got better(higher recall) embeddings from somewhere? Just plug the new ones and GalaXC will have better preformance, no nead to make any code change!
+We have provided the DX(embeddings from Module 1 of Astec) embeddings for public benchmark datasets for ease of use. Got better(higher recall) embeddings from somewhere? Just plug the new ones and GalaXC will have better preformance, no nead to make any code change! These files for LF-AmazonTitles-131K, LF-WikiSeeAlsoTitles-320K and LF-AmazonTitles-1.3M can be found [here](https://drive.google.com/drive/folders/1PamOpzMV6NlgvBEOwpxPZ4dahnun-dtN?usp=sharing). Except the files in XXCondensedData, all other files are copy of the datasets from [The Extreme Classification Repository](http://manikvarma.org/downloads/XC/XMLRepository.html).
 
 
 #### Sample Runs
