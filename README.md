@@ -39,7 +39,7 @@ DatasetName (e.g. LF-AmazonTitles-131K)
 
 ```
 
-We have provided the DX[embeddings from Module 1 of Astec] and FT[embeddings from fastText trained on wikipedia] embeddings for public benchmark datasets for ease of use. Got better embeddings(higher recall) from somewhere? Just plug the new ones and GalaXC will have better preformance, no nead to make any code change!
+We have provided the DX(embeddings from Module 1 of Astec) embeddings for public benchmark datasets for ease of use. Got better(higher recall) embeddings from somewhere? Just plug the new ones and GalaXC will have better preformance, no nead to make any code change!
 
 
 #### Sample Runs
