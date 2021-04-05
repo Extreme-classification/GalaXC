@@ -16,7 +16,6 @@ python -u train_main.py \
  --random-shuffle-nbrs ${11} \
  --fanouts ${12} \
  --num-HN-shortlist ${13} \
- --repo 1 \
  --embedding-type DX \
  --run-type NR \
  --num-validation 25000 \
