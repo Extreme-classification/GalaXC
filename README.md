@@ -23,7 +23,7 @@ cd ../GalaXC
 ```
 
 #### Dataset Structure
-Your dataset should have the following strucutre:
+Your dataset should have the following structure:
 ```
 DatasetName (e.g. LF-AmazonTitles-131K)
 │   trn_X.txt   (text for trn documents, one text in each line)
