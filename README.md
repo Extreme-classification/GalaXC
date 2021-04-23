@@ -40,7 +40,7 @@ DatasetName (e.g. LF-AmazonTitles-131K)
 
 ```
 
-We have provided the DX(embeddings from Module 1 of Astec) embeddings for public benchmark datasets for ease of use. Got better(higher recall) embeddings from somewhere? Just plug the new ones and GalaXC will have better preformance, no nead to make any code change! These files for LF-AmazonTitles-131K, LF-WikiSeeAlsoTitles-320K and LF-AmazonTitles-1.3M can be found [here](https://drive.google.com/drive/folders/1PamOpzMV6NlgvBEOwpxPZ4dahnun-dtN?usp=sharing). Except the files in XXCondensedData, all other files are copy of the datasets from [The Extreme Classification Repository](http://manikvarma.org/downloads/XC/XMLRepository.html).
+We have provided the DX(embeddings from Module 1 of Astec) embeddings for public benchmark datasets for ease of use. Got better(higher recall) embeddings from somewhere? Just plug the new ones and GalaXC will have better preformance, no need to make any code change! These files for LF-AmazonTitles-131K, LF-WikiSeeAlsoTitles-320K and LF-AmazonTitles-1.3M can be found [here](https://drive.google.com/drive/folders/1PamOpzMV6NlgvBEOwpxPZ4dahnun-dtN?usp=sharing). Except the files in DXCondensedData, all other files are copy of the datasets from [The Extreme Classification Repository](http://manikvarma.org/downloads/XC/XMLRepository.html).
 
 
 #### Sample Runs
