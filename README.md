@@ -34,9 +34,9 @@ DatasetName (e.g. LF-AmazonTitles-131K)
 |   filter_labels_test.txt (filter labels where label and test documents are same)
 │
 └───XXCondensedData (embeddings for tst, trn documents and labels, for benchmark datasets, XX=DX[Astec])
-    │   trn_point_embs.npy (2D nummpy matrix for trn document embeddings)
-    │   tst_point_embs.npy (2D nummpy matrix for tst document embeddings)
-    |   label_embs.npy     (2D nummpy matrix for label embeddings)
+    │   trn_point_embs.npy (2D numpy matrix for trn document embeddings)
+    │   tst_point_embs.npy (2D numpy matrix for tst document embeddings)
+    |   label_embs.npy     (2D numpy matrix for label embeddings)
 
 ```
 
