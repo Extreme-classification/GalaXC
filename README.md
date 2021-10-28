@@ -60,3 +60,8 @@ python -u -W ignore train_main.py --dataset /your/path/to/data/LF-WikiSeeAlsoTit
 ```bash
 python -u -W ignore train_main.py --dataset /your/path/to/data/LF-AmazonTitles-1.3M --save-model 0  --devices cuda:0  --num-epochs 24  --num-HN-epochs 15  --batch-size 512  --lr 0.001  --attention-lr 0.05 --adjust-lr 4,8,12,16,18,20,22  --dlr-factor 0.5  --mpt 0  --restrict-edges-num 5  --restrict-edges-head-threshold 20  --num-random-samples 100000  --random-shuffle-nbrs 1  --fanouts 3,3,3  --num-HN-shortlist 500   --embedding-type DX  --run-type NR  --num-validation 25000  --validation-freq -1  --num-shortlist 500 --predict-ova 0  --A 0.6  --B 2.6
 ```
+
+### YOU MAY ALSO LIKE
+- [DeepXML: A Deep Extreme Multi-Label Learning Framework Applied to Short Text Documents](https://github.com/Extreme-classification/deepxml)
+- [DECAF: Deep Extreme Classification with Label Features](https://github.com/Extreme-classification/DECAF)
+- [ECLARE: Extreme Classification with Label Graph Correlations](https://github.com/Extreme-classification/ECLARE)
